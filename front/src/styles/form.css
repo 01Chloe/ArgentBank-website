@@ -17,3 +17,7 @@
 .input-remember label {
   margin-left: 0.25rem;
 }
+.error-message {
+  color: crimson;
+  font-size: 0.8rem;
+}
