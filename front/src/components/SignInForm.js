@@ -1,18 +1,17 @@
 import { Navigate } from "react-router-dom"
 import Button from "./Button"
 import { useState } from "react"
-import { useLoginUserMutation } from "../store/authApi"
+import { useLoginUserMutation, useUserInfosMutation } from "../store/authApi"
 import { useDispatch } from "react-redux"
 import {
-  setUser,
+  setUserName,
   setFirstName,
   setLastName,
   tokenReceived,
 } from "../store/authSlice"
-import { useUserInfosMutation } from "../store/authApi"
 import "../styles/form.css"
 
-export default function Form() {
+export default function SignInForm() {
   const dispatch = useDispatch()
 
   const [email, setEmail] = useState("")
@@ -34,7 +33,7 @@ export default function Form() {
         const userName = data.body.userName
         const firstName = data.body.firstName
         const lastName = data.body.lastName
-        dispatch(setUser(userName))
+        dispatch(setUserName(userName))
         dispatch(setFirstName(firstName))
         dispatch(setLastName(lastName))
       }
@@ -72,7 +71,7 @@ export default function Form() {
         <input type="checkbox" id="remember-me" />
         <label htmlFor="remember-me">Remember me</label>
       </div>
-      <Button text={"Sign In"} className={"sign-in-button"} />
+      <Button text={"Sign In"} className={"btn sign-in-button"} />
       {loginData && <Navigate to="/profile" />}
     </form>
   )

@@ -19,7 +19,7 @@ export default function Header() {
           Sign In
         </Link>
       ) : (
-        <div className="main-nav-item">
+        <div>
           <Link to="/profile" className="main-nav-item">
             <i className="fa-solid fa-circle-user"></i>
             {state.userName}

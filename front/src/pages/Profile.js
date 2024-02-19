@@ -1,8 +1,8 @@
 import "../styles/user.css"
-import Button from "../components/Button"
 import Account from "../components/Account"
 import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
+import EditUserNameForm from "../components/EditUserNameForm"
 
 export default function Profile() {
   const state = useSelector((state) => state.auth)
@@ -23,6 +23,7 @@ export default function Profile() {
       description: "Current Balance",
     },
   ]
+
   return (
     <>
       {state.token && (
@@ -33,7 +34,7 @@ export default function Profile() {
               <br />
               {`${state.firstName} ${state.lastName} !`}
             </h1>
-            <Button text={"Edit Name"} className={"edit-button"} />
+            <EditUserNameForm />
           </div>
           <h2 className="sr-only">Accounts</h2>
           {data.map((item, index) => (
