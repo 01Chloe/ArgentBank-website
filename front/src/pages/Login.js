@@ -1,4 +1,3 @@
-import "../styles/login.css"
 import SignInForm from "../components/SignInForm"
 
 export default function Login() {

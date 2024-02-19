@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux"
 import Button from "./Button"
 import { useState } from "react"
-import { useEditUserNameMutation } from "../store/authApi"
+import { useEditUserNameMutation } from "../authRedux/authApi"
 import { useDispatch } from "react-redux"
-import { setUserName } from "../store/authSlice"
-import "../styles/editUserNameForm.css"
+import { setUserName } from "../authRedux/userSlice"
+import "../styles/form.css"
 
 export default function EditUserNameForm() {
-  const state = useSelector((state) => state.auth)
+  const state = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
   const [newUserName, setNewUserName] = useState("")
@@ -37,10 +37,10 @@ export default function EditUserNameForm() {
           onClick={() => setIsEditUserName(true)}
         />
       ) : (
-        <>
+        <div className="edit-username-content">
           <h1>Edit user infos</h1>
-          <form onSubmit={handleSubmit} className="edit-form">
-            <div className="input-group">
+          <form onSubmit={handleSubmit}>
+            <div className="input-wrapper">
               <label htmlFor="userName">User name: </label>
               <input
                 id="userName"
@@ -48,15 +48,15 @@ export default function EditUserNameForm() {
                 onChange={(e) => setNewUserName(e.target.value)}
               />
             </div>
-            <div className="input-group">
+            <div className="input-wrapper">
               <label htmlFor="userFirstName">First name: </label>
               <input id="userFirstName" value={state.firstName} disabled />
             </div>
-            <div className="input-group">
+            <div className="input-wrapper">
               <label htmlFor="userLastName">Last name: </label>
               <input id="userLastName" value={state.lastName} disabled />
             </div>
-            <div className="btn-group">
+            <div className="btn-wrapper">
               <Button text={"Save"} className={"btn edit-button"} />
               <Button
                 text={"Cancel"}
@@ -65,7 +65,7 @@ export default function EditUserNameForm() {
               />
             </div>
           </form>
-        </>
+        </div>
       )}
     </>
   )

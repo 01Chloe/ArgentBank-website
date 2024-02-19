@@ -1,14 +1,17 @@
 import { Navigate } from "react-router-dom"
 import Button from "./Button"
 import { useState } from "react"
-import { useLoginUserMutation, useUserInfosMutation } from "../store/authApi"
+import {
+  useLoginUserMutation,
+  useUserInfosMutation,
+} from "../authRedux/authApi"
 import { useDispatch } from "react-redux"
 import {
   setUserName,
   setFirstName,
   setLastName,
   tokenReceived,
-} from "../store/authSlice"
+} from "../authRedux/userSlice"
 import "../styles/form.css"
 
 export default function SignInForm() {

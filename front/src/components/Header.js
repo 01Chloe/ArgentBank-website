@@ -2,10 +2,10 @@ import logo from "../img/argentBankLogo.png"
 import "../styles/header.css"
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { logout } from "../store/authSlice"
+import { logout } from "../authRedux/userSlice"
 
 export default function Header() {
-  const state = useSelector((state) => state.auth)
+  const state = useSelector((state) => state.user)
   const dispatch = useDispatch()
   return (
     <nav className="main-nav">

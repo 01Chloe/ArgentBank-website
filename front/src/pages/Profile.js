@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom"
 import EditUserNameForm from "../components/EditUserNameForm"
 
 export default function Profile() {
-  const state = useSelector((state) => state.auth)
+  const state = useSelector((state) => state.user)
   const data = [
     {
       title: "Argent Bank Checking (x8349)",
