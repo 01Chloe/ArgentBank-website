@@ -3,33 +3,3 @@
   background-color: #00bc77;
   color: #fff;
 }
-.sign-in-button {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  font-size: 1.1rem;
-  margin-top: 1rem;
-  border: 2px solid #00bc77;
-  text-decoration: underline;
-  cursor: pointer;
-}
-.edit-button {
-  border-color: #00bc77;
-  padding: 10px;
-  cursor: pointer;
-  letter-spacing: 0.3px;
-}
-.transaction-button {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  font-size: 1.1rem;
-  margin-top: 1rem;
-  border-color: #00bc77;
-  letter-spacing: 0.7px;
-}
-@media (min-width: 720px) {
-  .transaction-button {
-    width: 200px;
-  }
-}
