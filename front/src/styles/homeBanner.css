@@ -5,6 +5,7 @@
   background-repeat: no-repeat;
   height: 300px;
   position: relative;
+  aspect-ratio: auto;
 }
 .hero-content {
   position: relative;

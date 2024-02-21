@@ -9,6 +9,7 @@
   width: 200px;
   display: flex;
   align-items: center;
+  aspect-ratio: 100/27;
 }
 .main-nav-item {
   font-weight: bold;
