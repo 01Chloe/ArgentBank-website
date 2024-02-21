@@ -1,29 +1,38 @@
 import { Navigate } from "react-router-dom"
 import Button from "./Button"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
   useLoginUserMutation,
   useUserInfosMutation,
 } from "../authRedux/authApi"
-import { useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import {
   setUserName,
   setFirstName,
   setLastName,
+  setUserEmail,
   tokenReceived,
 } from "../authRedux/userSlice"
 import "../styles/form.css"
 
 export default function SignInForm() {
   const dispatch = useDispatch()
+  const state = useSelector((state) => state.persistedReducer)
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [rememberMe, setRememberMe] = useState(false)
 
   const [loginUser, { data: loginData, error: loginError }] =
     useLoginUserMutation()
   const [infosUser, { data: userData, error: userError }] =
     useUserInfosMutation()
+
+  useEffect(() => {
+    if (state.userEmail) {
+      setEmail(state.userEmail)
+    }
+  }, [state.userEmail])
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -36,13 +45,23 @@ export default function SignInForm() {
         const userName = data.body.userName
         const firstName = data.body.firstName
         const lastName = data.body.lastName
+        const userEmail = data.body.email
         dispatch(setUserName(userName))
         dispatch(setFirstName(firstName))
         dispatch(setLastName(lastName))
+        if (rememberMe) {
+          dispatch(setUserEmail(userEmail))
+        } else {
+          dispatch(setUserEmail(null))
+        }
       }
     } catch (error) {
       console.error("Error", error)
     }
+  }
+
+  const handleRememberMe = (e) => {
+    setRememberMe(e.target.checked)
   }
 
   return (
@@ -71,7 +90,12 @@ export default function SignInForm() {
         )}
       </div>
       <div className="input-remember">
-        <input type="checkbox" id="remember-me" />
+        <input
+          type="checkbox"
+          id="remember-me"
+          checked={rememberMe}
+          onChange={handleRememberMe}
+        />
         <label htmlFor="remember-me">Remember me</label>
       </div>
       <Button text={"Sign In"} className={"btn sign-in-button"} />
