@@ -7,7 +7,7 @@ import { setUserName } from "../authRedux/userSlice"
 import "../styles/form.css"
 
 export default function EditUserNameForm() {
-  const state = useSelector((state) => state.user)
+  const state = useSelector((state) => state.persistedReducer)
   const dispatch = useDispatch()
 
   const [newUserName, setNewUserName] = useState("")

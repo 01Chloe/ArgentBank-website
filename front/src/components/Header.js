@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { logout } from "../authRedux/userSlice"
 
 export default function Header() {
-  const state = useSelector((state) => state.user)
+  const state = useSelector((state) => state.persistedReducer)
   const dispatch = useDispatch()
   return (
     <nav className="main-nav">
