@@ -1,4 +1,4 @@
-import "../styles/user.css"
+import "../styles/profile.css"
 import Account from "../components/Account"
 import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
