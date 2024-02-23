@@ -1,5 +1,5 @@
 .hero {
-  background-image: url("../img/bank-tree.jpg");
+  background-image: url("../img/bank-tree-620px.jpg");
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,8 +26,14 @@
   font-size: 0.9rem;
 }
 
+@media screen and (min-width: 620px) {
+  .hero {
+    background-image: url("../img/bank-tree-920px.jpg");
+  }
+}
 @media screen and (min-width: 920px) {
   .hero {
+    background-image: url("../img/bank-tree-1650px.jpg");
     height: 400px;
     background-position: 0% 33%;
   }

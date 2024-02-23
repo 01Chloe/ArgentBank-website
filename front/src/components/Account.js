@@ -10,10 +10,7 @@ export default function Account({ title, amount, description }) {
         <p className="account-amount-description">{description}</p>
       </div>
       <div className="account-content-wrapper cta">
-        <Button
-          text={"View transactions"}
-          className={"btn transaction-button"}
-        />
+        <Button text={"View transactions"} className={"transaction-button"} />
       </div>
     </section>
   )

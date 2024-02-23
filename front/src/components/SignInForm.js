@@ -98,7 +98,7 @@ export default function SignInForm() {
         />
         <label htmlFor="remember-me">Remember me</label>
       </div>
-      <Button text={"Sign In"} className={"btn sign-in-button"} />
+      <Button text={"Sign In"} className={"sign-in-button"} />
       {loginData && <Navigate to="/profile" />}
     </form>
   )

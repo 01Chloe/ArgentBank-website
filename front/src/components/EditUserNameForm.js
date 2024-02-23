@@ -12,20 +12,33 @@ export default function EditUserNameForm() {
 
   const [newUserName, setNewUserName] = useState("")
   const [isEditUserName, setIsEditUserName] = useState(false)
+  const [isError, setIsError] = useState(false)
 
   const [editUserName, { data }] = useEditUserNameMutation()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (newUserName === "") {
+      setIsError(true)
+      return
+    }
     try {
       const { data } = await editUserName({ userName: newUserName })
       if (data.status === 200) {
+        setIsError(false)
         dispatch(setUserName(newUserName))
       }
       setIsEditUserName(false)
+      setNewUserName("")
     } catch (error) {
       console.error("Error", error)
     }
+  }
+
+  const handleCancel = () => {
+    setIsEditUserName(false)
+    setIsError(false)
+    setNewUserName("")
   }
 
   return (
@@ -33,7 +46,7 @@ export default function EditUserNameForm() {
       {!isEditUserName ? (
         <Button
           text={"Edit Name"}
-          className={"btn edit-button"}
+          className={"edit-button"}
           onClick={() => setIsEditUserName(true)}
         />
       ) : (
@@ -56,12 +69,17 @@ export default function EditUserNameForm() {
               <label htmlFor="userLastName">Last name: </label>
               <input id="userLastName" value={state.lastName} disabled />
             </div>
+            {isError && (
+              <span className="error-message">
+                Please enter a user name before save
+              </span>
+            )}
             <div className="btn-wrapper">
-              <Button text={"Save"} className={"btn edit-button"} />
+              <Button text={"Save"} className={"edit-button"} />
               <Button
                 text={"Cancel"}
-                className={"btn edit-button"}
-                onClick={() => setIsEditUserName(false)}
+                className={"edit-button"}
+                onClick={() => handleCancel()}
               />
             </div>
           </form>
