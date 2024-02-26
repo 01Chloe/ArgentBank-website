@@ -31,7 +31,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE],
       },
     }).concat(authApi.middleware),
-  // devTools: false,
+  devTools: false,
 })
 
 setupListeners(store.dispatch)
