@@ -14,7 +14,7 @@ export default function EditUserNameForm() {
   const [isEditUserName, setIsEditUserName] = useState(false)
   const [isError, setIsError] = useState(false)
 
-  const [editUserName, { data }] = useEditUserNameMutation()
+  const [editUserName] = useEditUserNameMutation()
 
   const handleSubmit = async (e) => {
     e.preventDefault()

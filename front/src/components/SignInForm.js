@@ -25,8 +25,7 @@ export default function SignInForm() {
 
   const [loginUser, { data: loginData, error: loginError }] =
     useLoginUserMutation()
-  const [infosUser, { data: userData, error: userError }] =
-    useUserInfosMutation()
+  const [infosUser] = useUserInfosMutation()
 
   useEffect(() => {
     if (state.userEmail) {
