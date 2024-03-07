@@ -50,7 +50,7 @@ export default function EditUserNameForm() {
           onClick={() => setIsEditUserName(true)}
         />
       ) : (
-        <div className="edit-username-content">
+        <div className="form-container">
           <h1>Edit user infos</h1>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
