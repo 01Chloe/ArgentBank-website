@@ -3,7 +3,7 @@ import Button from "./Button"
 import { useState } from "react"
 import { useEditUserNameMutation } from "../authRedux/authApi"
 import { useDispatch } from "react-redux"
-import { setUserName } from "../authRedux/userSlice"
+import { setUser } from "../authRedux/userSlice"
 import "../styles/form.css"
 
 export default function EditUserNameForm() {
@@ -26,7 +26,7 @@ export default function EditUserNameForm() {
       const { data } = await editUserName({ userName: newUserName })
       if (data.status === 200) {
         setIsError(false)
-        dispatch(setUserName(newUserName))
+        dispatch(setUser({ ...state, userName: newUserName }))
       }
       setIsEditUserName(false)
       setNewUserName("")

@@ -6,13 +6,7 @@ import {
   useUserInfosMutation,
 } from "../authRedux/authApi"
 import { useSelector, useDispatch } from "react-redux"
-import {
-  setUserName,
-  setFirstName,
-  setLastName,
-  setUserEmail,
-  tokenReceived,
-} from "../authRedux/userSlice"
+import { setUser, setUserEmail, tokenReceived } from "../authRedux/userSlice"
 import "../styles/form.css"
 
 export default function SignInForm() {
@@ -41,13 +35,9 @@ export default function SignInForm() {
       if (token) {
         dispatch(tokenReceived(token))
         const { data } = await infosUser({})
-        const userName = data.body.userName
-        const firstName = data.body.firstName
-        const lastName = data.body.lastName
         const userEmail = data.body.email
-        dispatch(setUserName(userName))
-        dispatch(setFirstName(firstName))
-        dispatch(setLastName(lastName))
+        const { userName, firstName, lastName } = data.body
+        dispatch(setUser({ userName, firstName, lastName }))
         if (rememberMe) {
           dispatch(setUserEmail(userEmail))
         } else {
