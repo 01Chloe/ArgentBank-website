@@ -126,8 +126,8 @@ paths:
         - Bearer: []
       tags:
         - User Account Transactions
-      summary: Get all account transactions
-      description: See all account transactions, with date, description, amount and balance
+      summary: Get all account transactions for the current month
+      description: See all account transactions for the current month, with date, description, amount and balance
       parameters:
         - in: path
           name: accountId
@@ -310,16 +310,18 @@ definitions:
       message:
         type: string
       body:
-        type: object
-        properties:
-          accountId:
-            type: integer
-          accountName:
-            type: string
-          accountAmount:
-            type: number
-          accountBalance:
-            type: string
+        type: array
+        items:
+          type: object
+          properties:
+            accountId:
+              type: integer
+            accountName:
+              type: string
+            accountAmount:
+              type: number
+            accountBalance:
+              type: string
   TransactionsResponse:
     type: object
     properties:
@@ -328,18 +330,20 @@ definitions:
       message:
         type: string
       body:
-        type: object
-        properties:
-          transactionId:
-            type: integer
-          transactionDate:
-            type: integer
-          transactionDescritption:
-            type: string
-          transactionAmount:
-            type: number
-          transactionBalance:
-            type: number
+        type: array
+        items:
+          type: object
+          properties:
+            transactionId:
+              type: integer
+            transactionDate:
+              type: integer
+            transactionDescritption:
+              type: string
+            transactionAmount:
+              type: number
+            transactionBalance:
+              type: number
   TransactionResponse:
     type: object
     properties:
@@ -367,11 +371,6 @@ definitions:
         type: integer
       message:
         type: string
-      body:
-        type: object
-        properties:
-          note:
-            type: string
   EditCategory:
     properties:
       category:
@@ -383,8 +382,3 @@ definitions:
         type: integer
       message:
         type: string
-      body:
-        type: object
-        properties:
-          category:
-            type: string
